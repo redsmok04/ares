@@ -1,4 +1,4 @@
-# v0.0.1 chat system
+# v0.0.2 
 
 import discord
 from discord.ext import commands
@@ -14,17 +14,17 @@ aresid = '254512019116523522'
 async def on_ready():
     print('Bot is Ready! v0.0.1')
     print('I am running on ' + client.user.name)
-    
+
 @client.event
 async def on_message(message):
     if message.content.upper().startswith('I LOVE YOU ARES'):
         userID = message.author.id
         await client.send_message(message.channel, "<@%s> :heart:" % (userID))
-        
+
     if message.content.lower().startswith ("aresplay") and message.author.id == aresid:
         game = message.content[9:]
         await client.change_presence(game=discord.Game(name=game))
-        
+
     if message.content.upper().startswith('ARES YOU ARE FIRED'):
         await client.send_message(message.channel,"(╯°□°）╯︵ ┻━┻")
 
@@ -36,7 +36,7 @@ async def on_message(message):
 
     if message.content.startswith('You are a fucking Soviet ☭,I hope your race suffers in hell.'):
         await client.send_message(message.channel,"someone need to do something about this!!")
-        
+
     if message.content.upper().startswith('ARES FUCK YOU'):
         await client.delete_message(message)
 
@@ -104,7 +104,9 @@ async def on_message(message):
             tmp = await client.send_message(message.channel, 'Clearing messages...:smiling_imp:')
             async for msg in client.logs_from(message.channel):
                 await client.delete_message(msg)
-
+        else:
+            await client.send_message(message.channel, "No permission :frowning: ")
+            
     if message.content.upper().startswith('ARESCOINFLIP'):
         choice = random.randint(1,2)
         if choice == 1:
@@ -126,11 +128,9 @@ async def on_message(message):
             await client.send_message(message.channel, 'You rolled 5!')
         if choice1 == 6:
             await client.send_message(message.channel, 'You rolled 6!')
-            
-    if message.content.upper().startswith('ARESCOMMANDS'):
-        if '404272973311115265' in (role.id for role in message.author.roles):
-            await client.send_message(message.channel, 'ares you are fired = to fire ares. /// aressay = repeats after you. /// aresread = reads after you. /// arestellme = ask him some fortunu. /// aresnuke = delete messages. /// ares am i admin = to ask if you are admin. /// arescoinflip = flips a coin. /// aresrolladice = rolls a dice.///')
 
+    if message.content.upper().startswith('ARESKEYWORDS'):
+        await client.send_message(message.channel, "``` BASIC COMMANDS \n +------------------+--------------------------------+ \n |   Commands       |         Description            | \n +------------------+--------------------------------+ \n | aressay [word]   | Ares repeats after you.        | \n +------------------+--------------------------------+ \n | aresread [word]  | Ares speaks after your words.  | \n +------------------+--------------------------------+ \n | arestellme [ask] | Ares answers your fortunes.    | \n +------------------+--------------------------------+ \n | arescoinflip     | Ares flips a coin.             | \n +------------------+--------------------------------+ \n | aresrolladice    | Ares rolls a dice between 1-6. | \n -------------------+--------------------------------+ \n bot made by: Gokalp Turgut.```")
 
 
 client.run(token)
