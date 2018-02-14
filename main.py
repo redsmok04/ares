@@ -54,7 +54,7 @@ async def on_message(message):
 
 
     if message.content.upper().startswith('ARESREAD'):
-        if '413088579019866125' in (role.id for role in message.author.roles):
+        if '413424590602108938' in (role.id for role in message.author.roles):
             args = message.content.split(" ")
 
             await client.send_message(message.channel, "%s" % (" ".join(args[1:])),tts=True)
@@ -62,7 +62,7 @@ async def on_message(message):
             await client.send_message(message.channel, "No permission :frowning: ")
 
     if message.content.upper().startswith('ARES AM I ADMIN'):
-        if '404272973311115265' in (role.id for role in message.author.roles):
+        if '413424590602108938' in (role.id for role in message.author.roles):
             userID = message.author.id
             await client.send_message(message.channel, "<@%s> You are Admin :poop:" % (userID))
 
@@ -71,7 +71,7 @@ async def on_message(message):
             await client.send_message(message.channel, "<@%s> You are not Admin :frowning:" % (userID))
 
     if message.content.upper().startswith('ARES AM I PART OF TOOLKIT FOR YOU'):
-        if '404272973311115265' in (role.id for role in message.author.roles):
+        if '413424590602108938' in (role.id for role in message.author.roles):
             userID = message.author.id
             await client.send_message(message.channel, "<@%s> You are :stuck_out_tongue_closed_eyes: " % (userID))
 
@@ -100,7 +100,7 @@ async def on_message(message):
                                                                   "Outlook not so good",
                                                                   "Very doubtful"]))
     if message.content.upper().startswith('ARESNUKE'):
-        if '404272973311115265' in (role.id for role in message.author.roles):
+        if '413424590602108938' in (role.id for role in message.author.roles):
             tmp = await client.send_message(message.channel, 'Clearing messages...:smiling_imp:')
             async for msg in client.logs_from(message.channel):
                 await client.delete_message(msg)
