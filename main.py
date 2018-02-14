@@ -100,9 +100,10 @@ async def on_message(message):
                                                                   "Outlook not so good",
                                                                   "Very doubtful"]))
     if message.content.upper().startswith('ARESNUKE'):
-        tmp = await client.send_message(message.channel, 'Clearing messages...:smiling_imp:')
-        async for msg in client.logs_from(message.channel):
-            await client.delete_message(msg)
+        if '404272973311115265' in (role.id for role in message.author.roles):
+            tmp = await client.send_message(message.channel, 'Clearing messages...:smiling_imp:')
+            async for msg in client.logs_from(message.channel):
+                await client.delete_message(msg)
 
     if message.content.upper().startswith('ARESCOINFLIP'):
         choice = random.randint(1,2)
@@ -125,4 +126,11 @@ async def on_message(message):
             await client.send_message(message.channel, 'You rolled 5!')
         if choice1 == 6:
             await client.send_message(message.channel, 'You rolled 6!')
+            
+    if message.content.upper().startswith('ARESCOMMANDS'):
+        if '404272973311115265' in (role.id for role in message.author.roles):
+            await client.send_message(message.channel, 'ares you are fired = to fire ares. /// aressay = repeats after you. /// aresread = reads after you. /// arestellme = ask him some fortunu. /// aresnuke = delete messages. /// ares am i admin = to ask if you are admin. /// arescoinflip = flips a coin. /// aresrolladice = rolls a dice.///')
+
+
+
 client.run(token)
